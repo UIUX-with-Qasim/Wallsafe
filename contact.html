@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Contact Us | WallSafe — Damp Specialists Derby &amp; Nottingham</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap');
+
+:root{
+  --navy:#0a1628;--navy2:#0f1f3d;--accent:#e8a020;--accent2:#f5b93a;
+  --white:#fff;--offwhite:#f7f4ef;--gray:#8a9ab5;--lightgray:#e4e8f0;
+  --text:#1c2740;--sub:#5a6a85;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',system-ui,sans-serif;background:var(--offwhite);color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:9999;
+  background:#0a1628;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 5vw;height:72px;
+  border-bottom:1px solid rgba(255,255,255,0.08);
+  box-shadow:0 2px 30px rgba(0,0,0,0.4)}
+.nav-logo{font-family:'Bebas Neue',Impact,sans-serif;font-size:2.2rem;
+  color:#fff;letter-spacing:3px;text-decoration:none;line-height:1}
+.nav-logo span{color:#e8a020}
+.nav-links{display:flex;align-items:center;gap:1.8rem;list-style:none}
+.nav-links>li>a{color:rgba(255,255,255,0.78);text-decoration:none;
+  font-size:0.8rem;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;
+  transition:color 0.2s;white-space:nowrap}
+.nav-links>li>a:hover{color:#e8a020}
+.nav-cta{background:#e8a020 !important;color:#0a1628 !important;
+  padding:0.5rem 1.3rem;border-radius:5px;font-weight:700 !important;
+  transition:background 0.2s !important}
+.nav-cta:hover{background:#f5b93a !important}
+.nav-dropdown{position:relative}
+.nav-dropdown>a::after{content:'▾';font-size:0.6rem;opacity:0.5;margin-left:3px}
+.dropdown-menu{position:absolute;top:calc(100% + 10px);left:-10px;
+  background:#0f1f3d;border:1px solid rgba(255,255,255,0.1);
+  border-radius:12px;padding:0.5rem;min-width:240px;
+  opacity:0;pointer-events:none;transform:translateY(-8px);
+  transition:all 0.22s ease;z-index:100;
+  box-shadow:0 20px 60px rgba(0,0,0,0.5)}
+.nav-dropdown:hover .dropdown-menu{opacity:1;pointer-events:all;transform:translateY(0)}
+.dropdown-menu a{display:block;padding:0.6rem 1rem;
+  color:rgba(255,255,255,0.7) !important;font-size:0.83rem !important;
+  font-weight:500 !important;text-transform:none !important;letter-spacing:0 !important;
+  border-radius:7px;transition:all 0.15s;text-decoration:none}
+.dropdown-menu a:hover{background:rgba(232,160,32,0.13);color:#e8a020 !important;padding-left:1.4rem}
+.hamburger{display:none;background:none;border:1.5px solid rgba(255,255,255,0.25);
+  color:#fff;font-size:1.2rem;padding:0.35rem 0.8rem;border-radius:5px;cursor:pointer}
+
+/* ── HERO (homepage only) ── */
+.hero{min-height:100vh;background:var(--navy);position:relative;
+  display:flex;align-items:center;overflow:hidden;padding-top:72px}
+.hero-bg{position:absolute;inset:0;
+  background:radial-gradient(ellipse 75% 65% at 65% 50%,rgba(26,58,107,0.7) 0%,transparent 70%),
+    radial-gradient(ellipse 40% 40% at 15% 80%,rgba(232,160,32,0.09) 0%,transparent 60%),
+    linear-gradient(135deg,#0a1628 0%,#0f1f3d 100%)}
+.hero-grid{position:absolute;inset:0;
+  background-image:linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px);
+  background-size:65px 65px}
+.hero-inner{position:relative;z-index:2;
+  padding:3rem 5vw 4rem;max-width:1300px;margin:0 auto;width:100%;
+  display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.hero-badge{display:inline-flex;align-items:center;gap:0.5rem;
+  background:rgba(232,160,32,0.13);border:1px solid rgba(232,160,32,0.38);
+  color:#f5b93a;font-size:0.73rem;font-weight:700;letter-spacing:0.12em;
+  text-transform:uppercase;padding:0.42rem 1.1rem;border-radius:50px;margin-bottom:1.6rem}
+.hero-badge::before{content:'';width:7px;height:7px;background:#e8a020;
+  border-radius:50%;animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.4;transform:scale(1.3)}}
+.hero h1{font-family:'Bebas Neue',Impact,sans-serif;
+  font-size:clamp(3.8rem,6.5vw,7rem);line-height:0.92;
+  color:#fff;letter-spacing:1px;margin-bottom:1.5rem}
+.hero h1 em{font-style:normal;color:#e8a020;display:block}
+.hero-sub{font-size:1.05rem;line-height:1.8;color:rgba(255,255,255,0.6);
+  max-width:500px;margin-bottom:2.2rem}
+.hero-pills{display:flex;flex-wrap:wrap;gap:0.65rem;margin-bottom:2.2rem}
+.hero-pill{color:rgba(255,255,255,0.82);font-size:0.82rem;font-weight:500;
+  display:flex;align-items:center;gap:0.4rem}
+.hero-pill::before{content:'✓';color:#e8a020;font-weight:700}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
+
+/* ── HERO FORM CARD ── */
+.hero-form{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.11);
+  border-radius:18px;padding:2.5rem;backdrop-filter:blur(20px)}
+.hero-form h3{font-family:'DM Serif Display',Georgia,serif;
+  font-size:1.6rem;color:#fff;margin-bottom:0.3rem;font-weight:normal}
+.hero-form>p{color:rgba(255,255,255,0.45);font-size:0.85rem;margin-bottom:1.75rem}
+.fg{margin-bottom:1rem}
+.fg label{display:block;color:rgba(255,255,255,0.5);font-size:0.73rem;
+  font-weight:700;letter-spacing:0.07em;text-transform:uppercase;margin-bottom:0.38rem}
+.fg input,.fg select{width:100%;background:rgba(255,255,255,0.07);
+  border:1px solid rgba(255,255,255,0.13);border-radius:8px;
+  padding:0.75rem 1rem;color:#fff;font-size:0.9rem;
+  font-family:'DM Sans',sans-serif;outline:none;transition:border-color 0.2s}
+.fg input::placeholder{color:rgba(255,255,255,0.28)}
+.fg input:focus,.fg select:focus{border-color:#e8a020}
+.fg select option{background:#0f1f3d;color:#fff}
+.form-btn{width:100%;background:#e8a020;color:#0a1628;border:none;
+  border-radius:8px;padding:1rem;font-size:0.97rem;font-weight:700;
+  font-family:'DM Sans',sans-serif;cursor:pointer;
+  transition:all 0.2s;margin-top:0.4rem;letter-spacing:0.02em}
+.form-btn:hover{background:#f5b93a;transform:translateY(-1px)}
+.form-note{text-align:center;color:rgba(255,255,255,0.3);font-size:0.74rem;margin-top:0.65rem}
+
+/* ── TRUST BAR ── */
+.trust-bar{background:#0f1f3d;
+  border-top:1px solid rgba(255,255,255,0.07);
+  border-bottom:1px solid rgba(255,255,255,0.07);padding:1.5rem 5vw}
+.trust-inner{max-width:1300px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-around;flex-wrap:wrap;gap:1rem}
+.tstat{display:flex;align-items:center;gap:0.8rem}
+.tstat-num{font-family:'Bebas Neue',Impact,sans-serif;font-size:2.2rem;
+  color:#e8a020;line-height:1}
+.tstat-lbl{font-size:0.73rem;color:rgba(255,255,255,0.48);
+  line-height:1.35;font-weight:600;text-transform:uppercase;letter-spacing:0.05em}
+.tdiv{width:1px;height:38px;background:rgba(255,255,255,0.1)}
+
+/* ── BUTTONS ── */
+.btn-p{background:#e8a020;color:#0a1628;padding:0.85rem 2rem;border-radius:6px;
+  font-weight:700;font-size:0.92rem;text-decoration:none;
+  display:inline-flex;align-items:center;gap:0.5rem;
+  transition:all 0.2s;border:none;cursor:pointer;font-family:'DM Sans',sans-serif}
+.btn-p:hover{background:#f5b93a;transform:translateY(-2px);box-shadow:0 8px 24px rgba(232,160,32,0.35)}
+.btn-o{background:transparent;color:#fff;padding:0.85rem 2rem;border-radius:6px;
+  font-weight:600;font-size:0.92rem;text-decoration:none;
+  display:inline-flex;align-items:center;gap:0.5rem;
+  border:1.5px solid rgba(255,255,255,0.28);transition:all 0.2s}
+.btn-o:hover{border-color:rgba(255,255,255,0.6);background:rgba(255,255,255,0.06)}
+.btn-d{background:var(--navy);color:#fff;padding:0.85rem 2rem;border-radius:6px;
+  font-weight:700;font-size:0.92rem;text-decoration:none;
+  display:inline-flex;align-items:center;gap:0.5rem;transition:all 0.2s}
+.btn-d:hover{background:#1a3a6b;transform:translateY(-2px)}
+.btns{display:flex;gap:1rem;flex-wrap:wrap}
+
+/* ── SECTIONS ── */
+.sec{padding:5.5rem 5vw}
+.si{max-width:1300px;margin:0 auto}
+.slbl{display:inline-block;font-size:0.7rem;font-weight:700;
+  letter-spacing:0.16em;text-transform:uppercase;color:#e8a020;margin-bottom:0.65rem}
+.stitle{font-family:'Bebas Neue',Impact,sans-serif;
+  font-size:clamp(2.2rem,3.8vw,3.8rem);line-height:1;
+  color:var(--navy);margin-bottom:0.9rem;letter-spacing:0.5px}
+.stitle.lt{color:#fff}
+.ssub{font-size:1rem;line-height:1.75;color:var(--sub);max-width:580px}
+.ssub.lt{color:rgba(255,255,255,0.57)}
+
+/* ── PAGE HERO ── */
+.phero{background:var(--navy);padding:8.5rem 5vw 5.5rem;position:relative;overflow:hidden}
+.phero::before{content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 80% 70% at 65% 50%,rgba(26,58,107,0.65) 0%,transparent 70%),
+    linear-gradient(135deg,#0a1628 0%,#0f1f3d 100%)}
+.phero-grid{position:absolute;inset:0;
+  background-image:linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px);
+  background-size:60px 60px}
+.phero-inner{max-width:1300px;margin:0 auto;position:relative;z-index:1}
+.breadcrumb{display:flex;align-items:center;gap:0.5rem;margin-bottom:1.5rem}
+.breadcrumb a{color:rgba(255,255,255,0.38);text-decoration:none;
+  font-size:0.78rem;transition:color 0.2s}
+.breadcrumb a:hover{color:#e8a020}
+.breadcrumb span{color:rgba(255,255,255,0.2);font-size:0.78rem}
+.breadcrumb strong{color:rgba(255,255,255,0.65);font-size:0.78rem;font-weight:500}
+.ptag{display:inline-block;font-size:0.7rem;font-weight:700;
+  letter-spacing:0.14em;text-transform:uppercase;color:#e8a020;
+  background:rgba(232,160,32,0.12);border:1px solid rgba(232,160,32,0.26);
+  padding:0.35rem 1rem;border-radius:50px;margin-bottom:1.1rem}
+.phero h1{font-family:'Bebas Neue',Impact,sans-serif;
+  font-size:clamp(2.8rem,5.5vw,6rem);line-height:0.93;
+  color:#fff;letter-spacing:1px;margin-bottom:1.3rem}
+.phero h1 em{font-style:normal;color:#e8a020;display:block}
+.phero-sub{font-size:1.05rem;line-height:1.78;color:rgba(255,255,255,0.6);
+  max-width:580px;margin-bottom:2.2rem}
+
+/* ── PROBLEM SECTION ── */
+.prob-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:1.25rem;margin-top:3rem}
+.prob-card{background:#fff;border-radius:14px;padding:1.9rem;
+  border:1px solid var(--lightgray);position:relative;overflow:hidden;
+  transition:transform 0.25s,box-shadow 0.25s}
+.prob-card:hover{transform:translateY(-5px);box-shadow:0 20px 50px rgba(0,0,0,0.1)}
+.prob-card::before{content:'';position:absolute;top:0;left:0;right:0;
+  height:3px;background:#e8a020}
+.prob-icon{width:50px;height:50px;background:rgba(232,160,32,0.1);
+  border-radius:11px;display:flex;align-items:center;justify-content:center;
+  margin-bottom:1.1rem;font-size:1.4rem}
+.prob-card h3{font-family:'DM Serif Display',Georgia,serif;
+  font-size:1.18rem;color:var(--navy);margin-bottom:0.5rem;font-weight:normal}
+.prob-card p{font-size:0.87rem;line-height:1.67;color:var(--sub)}
+.prob-warn{background:var(--navy);border-radius:14px;padding:2.2rem 2.8rem;
+  margin-top:2.5rem;display:flex;align-items:center;
+  justify-content:space-between;gap:2rem;flex-wrap:wrap}
+.prob-warn p{color:rgba(255,255,255,0.78);font-size:1rem;
+  font-weight:500;line-height:1.65;flex:1}
+.prob-warn strong{color:#e8a020}
+
+/* ── SERVICES OVERVIEW ── */
+.svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:1.25rem;margin-top:3rem}
+.svc-card{background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.09);border-radius:14px;padding:2rem;
+  text-decoration:none;display:block;transition:all 0.3s}
+.svc-card:hover{background:rgba(255,255,255,0.08);
+  border-color:rgba(232,160,32,0.38);transform:translateY(-4px)}
+.svc-tag{display:inline-block;font-size:0.67rem;font-weight:700;
+  letter-spacing:0.11em;text-transform:uppercase;color:#e8a020;
+  background:rgba(232,160,32,0.12);padding:0.27rem 0.78rem;
+  border-radius:50px;margin-bottom:1rem}
+.svc-card h3{font-family:'DM Serif Display',Georgia,serif;
+  font-size:1.2rem;color:#fff;margin-bottom:0.55rem;font-weight:normal}
+.svc-card p{font-size:0.86rem;line-height:1.67;
+  color:rgba(255,255,255,0.5);margin-bottom:1.3rem}
+.svc-link{color:#e8a020;font-size:0.83rem;font-weight:600}
+
+/* ── STEPS ── */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:3rem}
+.step{text-align:center;padding:0 0.5rem}
+.step-n{width:58px;height:58px;background:#e8a020;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Bebas Neue',Impact,sans-serif;font-size:1.5rem;
+  color:var(--navy);margin:0 auto 1.3rem}
+.step h3{font-family:'DM Serif Display',Georgia,serif;
+  font-size:1.1rem;color:var(--navy);margin-bottom:0.5rem;font-weight:normal}
+.step p{font-size:0.85rem;line-height:1.67;color:var(--sub)}
+
+/* ── WHY US ── */
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:4.5rem;align-items:center}
+.why-feats{display:flex;flex-direction:column;gap:1.5rem;margin-top:2rem}
+.why-feat{display:flex;gap:1.1rem;align-items:flex-start}
+.why-icon{width:48px;height:48px;background:var(--navy);border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.15rem;flex-shrink:0}
+.why-feat h4{font-weight:700;font-size:0.95rem;color:var(--navy);margin-bottom:0.25rem}
+.why-feat p{font-size:0.86rem;line-height:1.65;color:var(--sub)}
+.why-visual{background:var(--navy);border-radius:20px;padding:2.8rem;
+  position:relative;overflow:hidden}
+.why-visual::before{content:'';position:absolute;top:-60px;right:-60px;
+  width:220px;height:220px;
+  background:radial-gradient(circle,rgba(232,160,32,0.18) 0%,transparent 70%);pointer-events:none}
+.why-quote{font-family:'DM Serif Display',Georgia,serif;
+  font-size:1.32rem;color:#fff;line-height:1.58;
+  font-style:italic;margin-bottom:1.5rem;position:relative;padding-top:1.8rem}
+.why-quote::before{content:'"';font-size:5rem;color:#e8a020;opacity:0.3;
+  position:absolute;top:-0.8rem;left:-0.3rem;
+  font-family:Georgia,serif;line-height:1}
+.why-author{display:flex;align-items:center;gap:0.9rem}
+.why-av{width:44px;height:44px;background:#e8a020;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Bebas Neue',sans-serif;font-size:1.2rem;color:var(--navy)}
+.why-author span{display:block;color:#fff;font-weight:600;font-size:0.9rem}
+.why-author small{color:rgba(255,255,255,0.45);font-size:0.78rem}
+.stars{color:#e8a020;font-size:1rem;margin-top:1.3rem;letter-spacing:2px}
+
+/* ── TESTIMONIALS ── */
+.rev-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));
+  gap:1.25rem;margin-top:2.5rem}
+.rev-card{background:#fff;border-radius:14px;padding:2rem;
+  border:1px solid var(--lightgray);transition:box-shadow 0.25s}
+.rev-card:hover{box-shadow:0 12px 35px rgba(0,0,0,0.08)}
+.rev-stars{color:#e8a020;font-size:0.88rem;margin-bottom:0.9rem;letter-spacing:2px}
+.rev-text{font-size:0.89rem;line-height:1.73;color:#3a4a65;
+  margin-bottom:1.25rem;font-style:italic}
+.rev-auth{display:flex;align-items:center;gap:0.75rem}
+.rev-av{width:40px;height:40px;background:var(--navy);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Bebas Neue',sans-serif;color:#e8a020;font-size:1rem;flex-shrink:0}
+.rev-name{font-weight:700;font-size:0.87rem;color:var(--navy)}
+.rev-loc{font-size:0.76rem;color:var(--gray)}
+
+/* ── GUARANTEE ── */
+.guar-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  gap:1.5rem;margin-top:3rem}
+.guar-card{background:#fff;border-radius:14px;padding:2.2rem;
+  border:1px solid var(--lightgray);text-align:center}
+.guar-icon{width:60px;height:60px;background:var(--navy);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.5rem;margin:0 auto 1.2rem}
+.guar-card h3{font-family:'DM Serif Display',Georgia,serif;
+  font-size:1.1rem;color:var(--navy);margin-bottom:0.5rem;font-weight:normal}
+.guar-card p{font-size:0.84rem;line-height:1.6;color:var(--sub)}
+
+/* ── AREAS ── */
+.areas-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:0.65rem}
+.area-chip{background:#fff;border:1px solid var(--lightgray);border-radius:8px;
+  padding:0.7rem 1rem;text-align:center;font-size:0.83rem;font-weight:500;
+  color:var(--navy);transition:all 0.2s;cursor:default}
+.area-chip:hover{background:var(--navy);color:#fff;border-color:var(--navy)}
+
+/* ── CTA BANNER ── */
+.cta-sec{background:var(--navy);padding:5rem 5vw;position:relative;overflow:hidden;text-align:center}
+.cta-sec::before{content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 70% 80% at 50% 50%,rgba(232,160,32,0.09) 0%,transparent 70%)}
+.cta-sec>.si{position:relative;z-index:1}
+.cta-sec p{color:rgba(255,255,255,0.57);font-size:1.05rem;
+  max-width:520px;margin:0.75rem auto 2.5rem;line-height:1.75}
+.cta-btns{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap}
+
+/* ── SERVICE DETAIL ── */
+.svc-det-grid{display:grid;grid-template-columns:1fr 390px;gap:4rem;align-items:start}
+.signs{display:flex;flex-direction:column;gap:0.8rem;margin-top:0.75rem}
+.sign{display:flex;align-items:flex-start;gap:0.8rem}
+.sign-dot{width:9px;height:9px;background:#e8a020;border-radius:50%;
+  flex-shrink:0;margin-top:0.42rem}
+.sign p{font-size:0.88rem;line-height:1.62;color:#4a5a75}
+.aside{background:var(--navy);border-radius:18px;padding:2.5rem;
+  position:sticky;top:90px;box-shadow:0 20px 60px rgba(0,0,0,0.3)}
+.aside-lbl{font-size:0.7rem;font-weight:700;letter-spacing:0.1em;
+  text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:0.3rem}
+.aside h3{font-family:'DM Serif Display',Georgia,serif;
+  font-size:1.5rem;color:#fff;margin-bottom:1rem;font-weight:normal;line-height:1.3}
+.feat-list{list-style:none;display:flex;flex-direction:column;gap:0.65rem}
+.feat-list li{display:flex;align-items:flex-start;gap:0.7rem;
+  font-size:0.87rem;line-height:1.55;color:rgba(255,255,255,0.72)}
+.feat-list li::before{content:'✓';color:#e8a020;font-weight:700;flex-shrink:0;margin-top:0.05rem}
+
+/* ── GUARANTEE STRIP ── */
+.g-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2rem}
+.gs{display:flex;align-items:flex-start;gap:1rem}
+.gs-icon{width:48px;height:48px;background:var(--offwhite);
+  border:1px solid var(--lightgray);border-radius:12px;
+  display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
+.gs h4{font-weight:700;font-size:0.92rem;color:var(--navy);margin-bottom:0.25rem}
+.gs p{font-size:0.82rem;line-height:1.55;color:var(--sub)}
+
+/* ── FAQ ── */
+.faq{max-width:760px;margin:2.5rem auto 0}
+.faq-item{border-bottom:1px solid var(--lightgray)}
+.faq-q{display:flex;justify-content:space-between;align-items:center;
+  padding:1.35rem 0;cursor:pointer;gap:1rem}
+.faq-q span{font-weight:600;font-size:0.95rem;color:var(--navy);line-height:1.4}
+.faq-icon{width:28px;height:28px;background:var(--navy);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  color:#fff;font-size:1.2rem;font-weight:300;
+  transition:transform 0.3s,background 0.2s;line-height:1}
+.faq-item.open .faq-icon{transform:rotate(45deg);background:#e8a020;color:var(--navy)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height 0.4s ease}
+.faq-item.open .faq-a{max-height:250px}
+.faq-a p{font-size:0.9rem;line-height:1.73;color:var(--sub);padding-bottom:1.35rem}
+
+/* ── SERVICES LIST PAGE ── */
+.slist-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:1.5rem;margin-top:3rem}
+.slist-card{background:#fff;border-radius:14px;padding:2.2rem;
+  border:1px solid var(--lightgray);text-decoration:none;display:block;transition:all 0.3s}
+.slist-card:hover{transform:translateY(-5px);
+  box-shadow:0 20px 50px rgba(0,0,0,0.1);border-color:#e8a020}
+.slist-tag{display:inline-block;font-size:0.67rem;font-weight:700;
+  letter-spacing:0.11em;text-transform:uppercase;color:#e8a020;
+  background:rgba(232,160,32,0.1);padding:0.27rem 0.78rem;
+  border-radius:50px;margin-bottom:1rem}
+.slist-card h3{font-family:'DM Serif Display',Georgia,serif;
+  font-size:1.3rem;color:var(--navy);margin-bottom:0.6rem;font-weight:normal}
+.slist-card p{font-size:0.87rem;line-height:1.65;color:var(--sub);margin-bottom:1.25rem}
+.slist-btn{color:#e8a020;font-size:0.85rem;font-weight:700}
+
+/* ── ABOUT PAGE ── */
+.about-grid{display:grid;grid-template-columns:1fr 390px;gap:4rem;align-items:start}
+.about-aside{background:var(--navy);border-radius:18px;padding:2.5rem;
+  position:sticky;top:90px}
+.about-aside h3{font-family:'DM Serif Display',Georgia,serif;
+  font-size:1.4rem;color:#fff;margin-bottom:1.25rem;font-weight:normal}
+.val-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:1.5rem;margin-top:3rem}
+.val-card{background:var(--offwhite);border-radius:14px;padding:2rem;
+  border:1px solid var(--lightgray);transition:transform 0.25s}
+.val-card:hover{transform:translateY(-4px)}
+.val-icon{width:52px;height:52px;background:var(--navy);border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.3rem;margin-bottom:1.1rem}
+.val-card h3{font-family:'DM Serif Display',Georgia,serif;
+  font-size:1.1rem;color:var(--navy);margin-bottom:0.5rem;font-weight:normal}
+.val-card p{font-size:0.86rem;line-height:1.65;color:var(--sub)}
+.asvc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+  gap:0.75rem;margin-top:2.5rem}
+.asvc-item{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);
+  border-radius:10px;padding:1.1rem 1.5rem;color:rgba(255,255,255,0.8);
+  text-decoration:none;font-size:0.9rem;font-weight:500;transition:all 0.2s}
+.asvc-item:hover{background:rgba(232,160,32,0.12);
+  border-color:rgba(232,160,32,0.35);color:#e8a020}
+
+/* ── AREAS PAGE ── */
+.areas-det-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.25rem}
+.adc{background:#fff;border-radius:12px;padding:1.75rem;
+  border:1px solid var(--lightgray);transition:transform 0.2s,box-shadow 0.2s}
+.adc:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,0.07)}
+.adc-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.6rem}
+.adc-top h3{font-family:'DM Serif Display',Georgia,serif;
+  font-size:1.2rem;color:var(--navy);margin-bottom:0.15rem;font-weight:normal}
+.adc-pc{font-size:0.74rem;color:var(--gray);font-weight:500}
+.adc-badge{background:rgba(232,160,32,0.12);color:#e8a020;font-size:0.68rem;
+  font-weight:700;padding:0.25rem 0.7rem;border-radius:50px;white-space:nowrap}
+.adc p{font-size:0.85rem;line-height:1.62;color:var(--sub);margin-bottom:1.1rem}
+.adc-link{color:#e8a020;font-size:0.82rem;font-weight:600;text-decoration:none}
+
+/* ── CONTACT PAGE ── */
+.contact-grid{display:grid;grid-template-columns:1fr 370px;gap:4rem;align-items:start}
+.cf-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.cform .fg2{margin-bottom:1.1rem}
+.cform .fg2 label{display:block;font-size:0.74rem;font-weight:700;
+  letter-spacing:0.07em;text-transform:uppercase;color:var(--sub);margin-bottom:0.4rem}
+.cform input,.cform select,.cform textarea{width:100%;background:#fff;
+  border:1.5px solid var(--lightgray);border-radius:8px;
+  padding:0.8rem 1rem;color:var(--text);font-size:0.92rem;
+  font-family:'DM Sans',sans-serif;outline:none;transition:border-color 0.2s,box-shadow 0.2s}
+.cform input:focus,.cform select:focus,.cform textarea:focus{
+  border-color:#e8a020;box-shadow:0 0 0 3px rgba(232,160,32,0.12)}
+.cform textarea{resize:vertical;min-height:110px}
+.cform-btn{width:100%;background:#e8a020;color:#0a1628;border:none;
+  border-radius:8px;padding:1.1rem;font-size:1rem;font-weight:700;
+  font-family:'DM Sans',sans-serif;cursor:pointer;
+  transition:all 0.2s;letter-spacing:0.02em}
+.cform-btn:hover{background:#f5b93a;transform:translateY(-1px)}
+.cinfo{background:var(--navy);border-radius:16px;padding:2.2rem;margin-bottom:1.5rem}
+.cinfo h3{font-family:'DM Serif Display',Georgia,serif;
+  font-size:1.35rem;color:#fff;margin-bottom:1.5rem;font-weight:normal}
+.cmeth{display:flex;align-items:flex-start;gap:1rem;margin-bottom:1.3rem}
+.cm-ic{width:42px;height:42px;background:rgba(232,160,32,0.13);border-radius:9px;
+  display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.cmeth span{display:block;font-size:0.68rem;font-weight:700;
+  text-transform:uppercase;letter-spacing:0.1em;
+  color:rgba(255,255,255,0.37);margin-bottom:0.2rem}
+.cmeth a{color:#e8a020;font-size:0.95rem;font-weight:600;text-decoration:none}
+.cmeth p{color:rgba(255,255,255,0.62);font-size:0.88rem;line-height:1.55}
+.cprom{background:#fff;border:1px solid var(--lightgray);
+  border-radius:14px;padding:2rem;margin-bottom:1.5rem}
+.cprom h4{font-family:'DM Serif Display',Georgia,serif;
+  font-size:1.2rem;color:var(--navy);margin-bottom:1.25rem;font-weight:normal}
+.prom-item{display:flex;align-items:flex-start;gap:0.9rem;margin-bottom:1.1rem}
+.p-num{width:28px;height:28px;background:#e8a020;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Bebas Neue',sans-serif;font-size:0.95rem;color:var(--navy);flex-shrink:0}
+.prom-item p{font-size:0.86rem;line-height:1.62;color:var(--sub)}
+.crev{background:var(--offwhite);border-radius:12px;padding:1.75rem;border:1px solid var(--lightgray)}
+
+/* ── FOOTER ── */
+footer{background:#060f1e;padding:4.5rem 5vw 2rem;color:rgba(255,255,255,0.45)}
+.foot-grid{max-width:1300px;margin:0 auto;
+  display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;
+  padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,0.07)}
+.foot-brand .nav-logo{font-size:2.2rem;display:block;margin-bottom:1rem}
+.foot-brand p{font-size:0.84rem;line-height:1.75;max-width:275px}
+.foot-contact{margin-top:1.5rem;display:flex;flex-direction:column;gap:0.5rem}
+.foot-contact a{color:#e8a020;text-decoration:none;font-size:0.87rem;font-weight:500}
+.foot-contact span{font-size:0.8rem}
+.foot-col h4{color:#fff;font-size:0.76rem;font-weight:700;
+  letter-spacing:0.13em;text-transform:uppercase;margin-bottom:1.25rem}
+.foot-col ul{list-style:none;display:flex;flex-direction:column;gap:0.6rem}
+.foot-col ul a{color:rgba(255,255,255,0.4);text-decoration:none;
+  font-size:0.84rem;transition:color 0.2s}
+.foot-col ul a:hover{color:#e8a020}
+.foot-btm{max-width:1300px;margin:0 auto;
+  display:flex;justify-content:space-between;align-items:center;
+  flex-wrap:wrap;gap:1rem;padding-top:2rem}
+.foot-btm p{font-size:0.78rem}
+.foot-badges{display:flex;gap:0.65rem;flex-wrap:wrap}
+.foot-badge{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);
+  border-radius:5px;padding:0.35rem 0.85rem;font-size:0.72rem;
+  color:rgba(255,255,255,0.35);font-weight:500}
+
+/* ── STICKY PHONE ── */
+.sticky-ph{position:fixed;bottom:1.75rem;right:1.75rem;
+  background:#e8a020;color:#0a1628;width:56px;height:56px;
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:1.4rem;box-shadow:0 4px 24px rgba(232,160,32,0.45);
+  text-decoration:none;z-index:998;transition:transform 0.2s}
+.sticky-ph:hover{transform:scale(1.12)}
+
+/* ── ANIMATIONS ── */
+.fu{opacity:0;transform:translateY(28px);transition:opacity 0.65s,transform 0.65s}
+.fu.vis{opacity:1;transform:translateY(0)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){
+  .svc-det-grid{grid-template-columns:1fr}
+  .aside{position:static}
+  .about-grid{grid-template-columns:1fr}
+  .about-aside{position:static}
+  .contact-grid{grid-template-columns:1fr}
+  .why-grid{grid-template-columns:1fr}
+}
+@media(max-width:900px){
+  .steps{grid-template-columns:1fr 1fr}
+  .foot-grid{grid-template-columns:1fr 1fr}
+  nav .nav-links{display:none}
+  nav .hamburger{display:flex;align-items:center}
+  #navLinks{display:none!important}
+  #navLinks.open{
+    display:flex!important;flex-direction:column;
+    position:fixed;top:72px;left:0;right:0;
+    background:rgba(10,22,40,0.99);
+    padding:1.5rem 5vw 2rem;gap:0.75rem;
+    border-bottom:1px solid rgba(255,255,255,0.09);
+    z-index:9998;max-height:calc(100vh - 72px);overflow-y:auto}
+  #navLinks.open .dropdown-menu{
+    position:static;opacity:1;pointer-events:all;
+    transform:none;box-shadow:none;background:transparent;
+    border:none;padding:0.3rem 0 0.3rem 1rem;min-width:unset}
+}
+@media(max-width:600px){
+  .sec{padding:3.5rem 5vw}
+  .foot-grid{grid-template-columns:1fr}
+  .trust-inner{justify-content:center}
+  .tdiv{display:none}
+  .phero{padding:7rem 5vw 4rem}
+  .hero-inner{grid-template-columns:1fr;gap:2.5rem;padding:2.5rem 5vw 3.5rem}
+  .steps{grid-template-columns:1fr}
+  .cf-row{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">Wall<span>Safe</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Home</a></li>
+    <li class="nav-dropdown"><a href="services.html">Services</a>
+      <div class="dropdown-menu">
+        <a href="rising-damp.html">Rising Damp Treatment</a>
+        <a href="penetrating-damp.html">Penetrating Damp Repair</a>
+        <a href="basement-damp.html">Basement Damp Proofing</a>
+        <a href="mould-condensation.html">Mould &amp; Condensation</a>
+        <a href="damp-surveys.html">Damp Surveys &amp; Reports</a>
+        <a href="wall-ties.html">Wall Tie Replacement</a>
+      </div>
+    </li>
+    <li><a href="areas.html">Areas</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="contact.html" class="nav-cta">📋 Free Survey</a></li>
+  </ul>
+  <button class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="Menu">☰</button>
+</nav>
+
+<div class="phero">
+  <div class="phero-grid"></div>
+  <div class="phero-inner">
+    <div class="breadcrumb"><a href="index.html">Home</a><span>/</span><strong>Contact</strong></div>
+    <div class="ptag">Get In Touch</div>
+    <h1>Book Your Free<br><em>Damp Survey.</em></h1>
+    <p class="phero-sub">Tell us about your property. We'll visit, assess the problem thoroughly, and give you a clear, honest, no-obligation quote.</p>
+  </div>
+</div>
+<div class="trust-bar">
+  <div class="trust-inner">
+    <div class="tstat"><div class="tstat-num">500+</div><div class="tstat-lbl">Homes<br>Protected</div></div>
+    <div class="tdiv"></div>
+    <div class="tstat"><div class="tstat-num">15+</div><div class="tstat-lbl">Years<br>Experience</div></div>
+    <div class="tdiv"></div>
+    <div class="tstat"><div class="tstat-num">100%</div><div class="tstat-lbl">Work<br>Guaranteed</div></div>
+    <div class="tdiv"></div>
+    <div class="tstat"><div class="tstat-num">5★</div><div class="tstat-lbl">Google<br>Rating</div></div>
+    <div class="tdiv"></div>
+    <div class="tstat"><div class="tstat-num">0</div><div class="tstat-lbl">Subcontractors<br>Used</div></div>
+  </div>
+</div>
+<section class="sec" style="background:var(--offwhite)">
+  <div class="si">
+    <div class="contact-grid">
+      <div>
+        <span class="slbl">Free Survey Request</span>
+        <h2 class="stitle" style="font-size:2.8rem">Tell Us About<br>Your Problem.</h2>
+        <p class="ssub" style="margin-bottom:2rem">Fill in the form and we'll respond within 24 hours. No spam, no pressure.</p>
+        <div class="cform">
+          <div class="cf-row">
+            <div class="fg2"><label>Full Name *</label><input type="text" placeholder="John Smith"></div>
+            <div class="fg2"><label>Phone Number *</label><input type="tel" placeholder="07700 900 000"></div>
+          </div>
+          <div class="cf-row">
+            <div class="fg2"><label>Email Address</label><input type="email" placeholder="john@email.com"></div>
+            <div class="fg2"><label>Your Postcode *</label><input type="text" placeholder="DE1 2AB"></div>
+          </div>
+          <div class="fg2"><label>What Is The Issue? *</label>
+            <select><option value="">Select a problem…</option>
+              <option>Rising Damp Treatment</option>
+              <option>Penetrating Damp Repairs</option>
+              <option>Basement Damp Proofing</option>
+              <option>Mould &amp; Condensation Control</option>
+              <option>Damp Survey &amp; Report</option>
+              <option>Wall Tie Replacement</option>
+              <option>Not Sure — Need a Survey</option>
+            </select></div>
+          <div class="fg2"><label>Tell Us More (Optional)</label>
+            <textarea placeholder="Describe what you're seeing — tide marks, wet patches after rain, black mould spots…" rows="4"></textarea></div>
+          <button class="cform-btn">Request My Free Survey →</button>
+          <p style="font-size:0.76rem;color:var(--gray);margin-top:0.75rem;text-align:center">✓ Response within 24 hours &nbsp;·&nbsp; ✓ 100% Free &nbsp;·&nbsp; ✓ No obligation &nbsp;·&nbsp; ✓ No hard sell</p>
+        </div>
+      </div>
+      <div>
+        <div class="cinfo">
+          <h3>How to Reach Us</h3>
+          <div class="cmeth"><div class="cm-ic">📞</div><div><span>Call Us Directly</span><a href="tel:07856291485">07856 291 485</a></div></div>
+          <div class="cmeth"><div class="cm-ic">✉</div><div><span>Email Us</span><a href="mailto:info@wallsafe.co.uk">info@wallsafe.co.uk</a></div></div>
+          <div class="cmeth"><div class="cm-ic">📍</div><div><span>Based In</span><p>Derby, East Midlands, DE1</p></div></div>
+          <div class="cmeth"><div class="cm-ic">🕐</div><div><span>Opening Hours</span><p>Mon–Fri: 8am – 5pm<br>Sat–Sun: 10am – 2pm</p></div></div>
+        </div>
+        <div class="cprom">
+          <h4>What Happens Next</h4>
+          <div class="prom-item"><div class="p-num">1</div><p>We call back within 24 hours to confirm your survey appointment at a convenient time.</p></div>
+          <div class="prom-item"><div class="p-num">2</div><p>A specialist visits your property and carries out a thorough free damp assessment.</p></div>
+          <div class="prom-item"><div class="p-num">3</div><p>You receive a clear, honest report with findings and recommendations. No pressure, no obligation.</p></div>
+        </div>
+        <div class="crev">
+          <div class="rev-stars">★★★★★</div>
+          <p class="rev-text">"Booked online, heard back the same day, survey done within the week. Honest, professional and no hard sell whatsoever."</p>
+          <div class="rev-auth"><div class="rev-av">PH</div><div><div class="rev-name">Paul H.</div><div class="rev-loc">Derby — Damp Survey</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="foot-grid">
+    <div class="foot-brand">
+      <a href="index.html" class="nav-logo">Wall<span>Safe</span></a>
+      <p>Derby &amp; Nottingham's trusted damp specialists. Family run, owner led, and committed to permanent solutions backed by real guarantees.</p>
+      <div class="foot-contact">
+        <a href="tel:07856291485">📞 07856 291 485</a>
+        <a href="mailto:info@wallsafe.co.uk">✉ info@wallsafe.co.uk</a>
+        <span>Derby, East Midlands, DE1</span>
+      </div>
+    </div>
+    <div class="foot-col"><h4>Services</h4><ul>
+      <li><a href="rising-damp.html">Rising Damp Treatment</a></li>
+      <li><a href="penetrating-damp.html">Penetrating Damp Repair</a></li>
+      <li><a href="basement-damp.html">Basement Damp Proofing</a></li>
+      <li><a href="mould-condensation.html">Mould &amp; Condensation</a></li>
+      <li><a href="damp-surveys.html">Damp Surveys &amp; Reports</a></li>
+      <li><a href="wall-ties.html">Wall Tie Replacement</a></li>
+    </ul></div>
+    <div class="foot-col"><h4>Areas</h4><ul>
+      <li><a href="areas.html">Derby</a></li>
+      <li><a href="areas.html">Nottingham</a></li>
+      <li><a href="areas.html">Long Eaton</a></li>
+      <li><a href="areas.html">Ilkeston</a></li>
+      <li><a href="areas.html">Beeston</a></li>
+      <li><a href="areas.html">All Areas →</a></li>
+    </ul></div>
+    <div class="foot-col"><h4>Company</h4><ul>
+      <li><a href="about.html">About WallSafe</a></li>
+      <li><a href="services.html">Our Services</a></li>
+      <li><a href="areas.html">Areas Covered</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+      <li><a href="contact.html">Book Free Survey</a></li>
+    </ul></div>
+  </div>
+  <div class="foot-btm">
+    <p>© 2025 WallSafe Ltd. All rights reserved. Registered in England &amp; Wales.</p>
+    <div class="foot-badges">
+      <span class="foot-badge">BBA Approved</span>
+      <span class="foot-badge">Building Reg Compliant</span>
+      <span class="foot-badge">5★ Google Rating</span>
+      <span class="foot-badge">Company Guaranteed</span>
+    </div>
+  </div>
+</footer>
+<a href="tel:07856291485" class="sticky-ph" title="Call Now">📞</a>
+<script>
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('vis')})},{threshold:0.1});
+document.querySelectorAll('.fu').forEach(el=>obs.observe(el));
+window.addEventListener('scroll',()=>{
+  document.querySelector('nav').style.boxShadow=window.scrollY>60?'0 4px 30px rgba(0,0,0,0.5)':'0 2px 30px rgba(0,0,0,0.4)';
+});
+function toggleFaq(el){
+  const item=el.parentElement;
+  const open=item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+  if(!open)item.classList.add('open');
+}
+</script>
+</body>
+</html>
